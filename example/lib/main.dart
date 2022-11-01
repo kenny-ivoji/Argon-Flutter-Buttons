@@ -157,7 +157,7 @@ class ArgonButtonExample extends StatelessWidget {
               height: 50,
             ),
             ArgonButton(
-              height: 50,
+              height: 100,
               roundLoadingShape: true,
               width: MediaQuery.of(context).size.width * 0.45,
               onTap: (startLoading, stopLoading, btnState) {
@@ -181,7 +181,7 @@ class ArgonButtonExample extends StatelessWidget {
                   // size: loaderWidth ,
                 ),
               ),
-              borderRadius: 5.0,
+              borderRadius: 30.0,
               color: Color(0xFFfb4747),
             ),
             SizedBox(

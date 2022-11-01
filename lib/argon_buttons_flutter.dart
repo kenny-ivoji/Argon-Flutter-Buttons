@@ -40,34 +40,34 @@ class ArgonButton extends StatefulWidget {
 
   ArgonButton(
       {required this.height,
-      required this.width,
-      this.minWidth: 0,
-      this.loader,
-      this.animationDuration: const Duration(milliseconds: 450),
-      this.curve: Curves.easeInOutCirc,
-      this.reverseCurve: Curves.easeInOutCirc,
-      required this.child,
-      this.onTap,
-      this.color,
-      this.focusColor,
-      this.hoverColor,
-      this.highlightColor,
-      this.splashColor,
-      this.colorBrightness,
-      this.elevation,
-      this.focusElevation,
-      this.hoverElevation,
-      this.highlightElevation,
-      this.padding: const EdgeInsets.all(0),
-      this.borderRadius: 0.0,
-      this.clipBehavior: Clip.none,
-      this.focusNode,
-      this.materialTapTargetSize,
-      this.roundLoadingShape: true,
-      this.borderSide: const BorderSide(color: Colors.transparent, width: 0),
-      this.disabledElevation,
-      this.disabledColor,
-      this.disabledTextColor})
+        required this.width,
+        this.minWidth: 0,
+        this.loader,
+        this.animationDuration: const Duration(milliseconds: 450),
+        this.curve: Curves.easeInOutCirc,
+        this.reverseCurve: Curves.easeInOutCirc,
+        required this.child,
+        this.onTap,
+        this.color,
+        this.focusColor,
+        this.hoverColor,
+        this.highlightColor,
+        this.splashColor,
+        this.colorBrightness,
+        this.elevation,
+        this.focusElevation,
+        this.hoverElevation,
+        this.highlightElevation,
+        this.padding: const EdgeInsets.all(0),
+        this.borderRadius: 0.0,
+        this.clipBehavior: Clip.none,
+        this.focusNode,
+        this.materialTapTargetSize,
+        this.roundLoadingShape: true,
+        this.borderSide: const BorderSide(color: Colors.transparent, width: 0),
+        this.disabledElevation,
+        this.disabledColor,
+        this.disabledTextColor})
       : assert(elevation == null || elevation >= 0.0),
         assert(focusElevation == null || focusElevation >= 0.0),
         assert(hoverElevation == null || hoverElevation >= 0.0),
@@ -168,33 +168,31 @@ class _ArgonButtonState extends State<ArgonButton>
           side: widget.borderSide,
           borderRadius: BorderRadius.circular(widget.roundLoadingShape
               ? lerpDouble(
-                  widget.borderRadius, widget.height / 2, _animation.value)!
+              widget.borderRadius, widget.height / 2, _animation.value)!
               : widget.borderRadius),
         ),
-        child: RaisedButton(
+        child: ElevatedButton(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(widget.color),
+              elevation: MaterialStateProperty.all(0),
+              shadowColor: MaterialStateProperty.all(Colors.transparent),
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                  side: widget.borderSide,
+                  borderRadius: BorderRadius.circular(widget.borderRadius),
+                ),
+              ),
+            ),
             key: _buttonKey,
-            color: widget.color,
-            focusColor: widget.focusColor,
-            hoverColor: widget.hoverColor,
-            highlightColor: widget.highlightColor,
-            splashColor: widget.splashColor,
-            colorBrightness: widget.colorBrightness,
-            elevation: widget.elevation,
-            focusElevation: widget.focusElevation,
-            hoverElevation: widget.hoverElevation,
-            highlightElevation: widget.highlightElevation,
-            padding: widget.padding,
             clipBehavior: widget.clipBehavior,
             focusNode: widget.focusNode,
-            materialTapTargetSize: widget.materialTapTargetSize,
-            disabledElevation: widget.disabledElevation,
-            disabledColor: widget.disabledColor,
-            disabledTextColor: widget.disabledTextColor,
-            onPressed: () {
+            onPressed: btn == ButtonState.Idle
+                ? () {
               widget.onTap!(
-                  () => animateForward(), () => animateReverse(), btn);
+                      () => animateForward(), () => animateReverse(), btn);
               // btnClicked();
-            },
+            }
+                : null,
             child: btn == ButtonState.Idle ? widget.child : widget.loader),
       ),
     );
@@ -235,35 +233,35 @@ class ArgonTimerButton extends StatefulWidget {
 
   ArgonTimerButton(
       {required this.height,
-      required this.width,
-      this.minWidth: 0,
-      this.loader,
-      this.animationDuration: const Duration(milliseconds: 450),
-      this.curve: Curves.easeInOutCirc,
-      this.reverseCurve: Curves.easeInOutCirc,
-      required this.child,
-      this.onTap,
-      this.color,
-      this.focusColor,
-      this.hoverColor,
-      this.highlightColor,
-      this.splashColor,
-      this.colorBrightness,
-      this.elevation,
-      this.focusElevation,
-      this.hoverElevation,
-      this.highlightElevation,
-      this.padding: const EdgeInsets.all(0),
-      this.borderRadius: 0.0,
-      this.clipBehavior: Clip.none,
-      this.focusNode,
-      this.materialTapTargetSize,
-      this.roundLoadingShape: true,
-      this.borderSide: const BorderSide(color: Colors.transparent, width: 0),
-      this.disabledElevation,
-      this.disabledColor,
-      this.disabledTextColor,
-      this.initialTimer: 0})
+        required this.width,
+        this.minWidth: 0,
+        this.loader,
+        this.animationDuration: const Duration(milliseconds: 450),
+        this.curve: Curves.easeInOutCirc,
+        this.reverseCurve: Curves.easeInOutCirc,
+        required this.child,
+        this.onTap,
+        this.color,
+        this.focusColor,
+        this.hoverColor,
+        this.highlightColor,
+        this.splashColor,
+        this.colorBrightness,
+        this.elevation,
+        this.focusElevation,
+        this.hoverElevation,
+        this.highlightElevation,
+        this.padding: const EdgeInsets.all(0),
+        this.borderRadius: 0.0,
+        this.clipBehavior: Clip.none,
+        this.focusNode,
+        this.materialTapTargetSize,
+        this.roundLoadingShape: true,
+        this.borderSide: const BorderSide(color: Colors.transparent, width: 0),
+        this.disabledElevation,
+        this.disabledColor,
+        this.disabledTextColor,
+        this.initialTimer: 0})
       : assert(elevation == null || elevation >= 0.0),
         assert(focusElevation == null || focusElevation >= 0.0),
         assert(hoverElevation == null || hoverElevation >= 0.0),
@@ -371,8 +369,8 @@ class _ArgonTimerButtonState extends State<ArgonTimerButton>
     var oneSec = const Duration(seconds: 1);
     _timer = new Timer.periodic(
       oneSec,
-      (Timer timer) => setState(
-        () {
+          (Timer timer) => setState(
+            () {
           if (secondsLeft < 1) {
             timer.cancel();
           } else {
@@ -403,40 +401,30 @@ class _ArgonTimerButtonState extends State<ArgonTimerButton>
           side: widget.borderSide,
           borderRadius: BorderRadius.circular(widget.roundLoadingShape
               ? lerpDouble(
-                  widget.borderRadius, widget.height / 2, _animation.value)!
+              widget.borderRadius, widget.height / 2, _animation.value)!
               : widget.borderRadius),
         ),
-        child: RaisedButton(
-            color: widget.color,
-            focusColor: widget.focusColor,
-            hoverColor: widget.hoverColor,
-            highlightColor: widget.highlightColor,
-            splashColor: widget.splashColor,
-            colorBrightness: widget.colorBrightness,
-            elevation: widget.elevation,
-            focusElevation: widget.focusElevation,
-            hoverElevation: widget.hoverElevation,
-            highlightElevation: widget.highlightElevation,
-            padding: widget.padding,
-            clipBehavior: widget.clipBehavior,
-            focusNode: widget.focusNode,
-            materialTapTargetSize: widget.materialTapTargetSize,
-            disabledElevation: widget.disabledElevation,
-            disabledColor: widget.disabledColor,
-            disabledTextColor: widget.disabledTextColor,
-            onPressed: () {
+        child: ElevatedButton(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(Colors.transparent),
+              elevation: MaterialStateProperty.all(0),
+              shadowColor: MaterialStateProperty.all(Colors.transparent),
+            ),
+            onPressed: btn == ButtonState.Idle
+                ? () {
               widget.onTap!((newCounter) => startTimer(newCounter), btn);
-            },
+            }
+                : null,
             child: btn == ButtonState.Idle
                 ? widget.child
                 : StreamBuilder(
-                    stream: emptyStream,
-                    builder: (context, snapshot) {
-                      if (secondsLeft == 0) {
-                        animateReverse();
-                      }
-                      return widget.loader!(secondsLeft);
-                    })),
+                stream: emptyStream,
+                builder: (context, snapshot) {
+                  if (secondsLeft == 0) {
+                    animateReverse();
+                  }
+                  return widget.loader!(secondsLeft);
+                })),
       ),
     );
   }
