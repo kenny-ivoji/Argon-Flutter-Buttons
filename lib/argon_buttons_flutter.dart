@@ -161,7 +161,7 @@ class _ArgonButtonState extends State<ArgonButton>
   Widget buttonBody() {
     return Container(
       height: widget.height,
-      width: lerpWidth(widget.width, minWidth, _animation.value),
+      width: widget.width,
       child: ButtonTheme(
         height: widget.height,
         shape: RoundedRectangleBorder(
@@ -394,7 +394,7 @@ class _ArgonTimerButtonState extends State<ArgonTimerButton>
   Widget buttonBody() {
     return Container(
       height: widget.height,
-      width: lerpWidth(widget.width, minWidth, _animation.value),
+      width: widget.width,
       child: ButtonTheme(
         height: widget.height,
         shape: RoundedRectangleBorder(
